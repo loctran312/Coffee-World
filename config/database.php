@@ -21,4 +21,4 @@
         // Nếu lỗi thì dừng và hiện thông báo
         throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }
-?>
+?>`
