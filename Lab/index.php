@@ -3,14 +3,14 @@ session_start();
 
 $base_dir = __DIR__; 
 
-// 1. Lấy đường dẫn từ tham số 'dir' (được truyền qua .htaccess hoặc URL)
+// Lấy đường dẫn từ tham số 'dir'
 $current_dir = isset($_GET['dir']) ? $_GET['dir'] : '';
 
 // Xử lý các dấu gạch chéo dư thừa và bảo mật
 $current_dir = trim($current_dir, '/'); 
 $current_dir = trim($current_dir, '\\'); 
 
-// 2. Bảo mật: Ngăn chặn người dùng truy cập ra khỏi thư mục Lab (Hack path traversal)
+// Bảo mật: Ngăn chặn người dùng truy cập ra khỏi thư mục Lab
 if (strpos($current_dir, '..') !== false) {
     $current_dir = ''; // Reset về gốc nếu phát hiện nghi vấn
 }
@@ -18,22 +18,18 @@ if (strpos($current_dir, '..') !== false) {
 // Đường dẫn thực tế để quét
 $scan_path = $base_dir . ($current_dir ? '/' . $current_dir : '');
 
-// 3. Xử lý nếu đường dẫn trỏ đến một FILE (chạy file đó)
+// Xử lý nếu đường dẫn trỏ đến một FILE
 if (is_file($scan_path)) {
-    // Nếu đây là yêu cầu trỏ thẳng đến một file (ví dụ: lab01/a.php), 
-    // thì chuyển hướng trình duyệt tới file đó để nó được chạy trực tiếp 
-    // (hoặc bao gồm file đó ở đây, nhưng chuyển hướng sẽ đơn giản hơn).
-    // Ở đây tôi chọn chuyển hướng để giữ nguyên chức năng chạy file PHP
     header("Location: " . $current_dir);
     exit();
 }
 
-// 4. Kiểm tra thư mục có tồn tại không
+// Kiểm tra thư mục có tồn tại không
 if (!is_dir($scan_path)) {
     die("Thư mục không tồn tại.");
 }
 
-// 5. Quét file và thư mục
+// Quét file và thư mục
 $items = scandir($scan_path);
 $folders = [];
 $files = [];
@@ -52,7 +48,7 @@ foreach ($items as $item) {
     }
 }
 
-// Logic Navbar (Lưu ý đường dẫn quay về cấp cha ../)
+// Logic Navbar
 $is_logged_in = isset($_SESSION['user_id']);
 $username = $_SESSION['username'] ?? '';
 $role = $_SESSION['role'] ?? 'user';
@@ -67,13 +63,11 @@ $role = $_SESSION['role'] ?? 'user';
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .lab-container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
-        
-        /* Breadcrumb (Thanh điều hướng nhỏ) */
+
         .breadcrumb { background: #f8f9fa; padding: 10px 15px; border-radius: 5px; margin-bottom: 20px; font-size: 16px; }
         .breadcrumb a { color: #4b2e05; text-decoration: none; font-weight: bold; }
         .breadcrumb span { color: #6c757d; }
 
-        /* Grid hiển thị folder/file */
         .lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
         
         .lab-card { 
