@@ -1,0 +1,46 @@
+Trần Hữu Lộc - DH52201004 - D22_TH07
+
+4.3
+ALTER TABLE `sach` ADD CONSTRAINT `fk_loai` FOREIGN KEY (`maloai`) REFERENCES `loai`(`maloai`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `sach` ADD CONSTRAINT `fk_nxb` FOREIGN KEY (`manxb`) REFERENCES `nhaxb`(`manxb`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `sach` ADD CONSTRAINT `fk_loai` FOREIGN KEY (`maloai`) REFERENCES `loai`(`maloai`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `sach` ADD CONSTRAINT `fk_nxb` FOREIGN KEY (`manxb`) REFERENCES `nhaxb`(`manxb`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `chitiethd` ADD CONSTRAINT `fk_mahd` FOREIGN KEY (`mahd`) REFERENCES `hoadon`(`mahd`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `chitiethd` ADD CONSTRAINT `fk_masach` FOREIGN KEY (`masach`) REFERENCES `sach`(`masach`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `hoadon` ADD  CONSTRAINT `fk_email` FOREIGN KEY (`email`) REFERENCES `khachhang`(`email`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+4.4
+ALTER TABLE `hoadon` CHANGE `trangthai` `trangthai` TINYINT NOT NULL DEFAULT '0';
+
+4.5
+CREATE VIEW top10 AS (SELECT * FROM SACH s ORDER BY s.gia DESC LIMIT 10);
+
+4.6
+CREATE PROCEDURE lietke(IN maloai VARCHAR(5)) BEGIN SELECT s.masach, s.tensach FROM sach s WHERE s.maloai = loai; END;
+
+5.1
+SELECT s.masach, s.tensach, s.maloai, l.tenloai FROM sach s JOIN loai l ON s.maloai = l.maloai;
+
+5.2
+CREATE PROCEDURE updateBook (IN id VARCHAR(15), gia FLOAT) BEGIN UPDATE sach s SET s.gia = gia WHERE s.masach = id; END;
+
+5.3
+SELECT s.masach, s.tensach, SUM(ct.soluong) AS tong_soluong FROM sach s JOIN chitiethd ct ON s.masach = ct.masach GROUP BY s.masach, s.tensach ORDER BY tong_soluong DESC LIMIT 1;
+
+5.4
+CREATE VIEW top10_banchay AS SELECT s.masach, s.tensach, SUM(ct.soluong) AS tong_soluong FROM sach s JOIN chitiethd ct ON s.masach = ct.masach GROUP BY s.masach, s.tensach ORDER BY tong_soluong DESC LIMIT 10;
+
+5.5
+C:\wamp64\bin\mysql\mysql8.2.0\bin>mysqldump -u root bookstore > bookstore_backup.sql
+
+5.6
+drop database bookstore
+
+5.7
+C:\wamp64\bin\mysql\mysql8.2.0\bin>mysql -u username -p bookstore < bookstore_backup.sql

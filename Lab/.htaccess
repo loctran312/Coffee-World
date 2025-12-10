@@ -1,0 +1,11 @@
+# BẬT ENGINE MOD_REWRITE
+RewriteEngine On
+
+# Tắt hiển thị danh mục mặc định của Apache
+Options -Indexes 
+
+# RULE CHÍNH: Nếu yêu cầu không phải là file hoặc thư mục có thật,
+# thì định tuyến yêu cầu đó đến index.php và truyền URI vào tham số 'dir'
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?dir=$1 [L,QSA]

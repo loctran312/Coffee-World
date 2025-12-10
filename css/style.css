@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #fffaf3;
+}
+
+/* Banner */
+.banner {
+    background-image: url('/img/Banner.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.banner h1 {
+    font-size: 3em;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Thanh menu */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4b2e05;
+    padding: 0 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 24px;
+    display: block;
+    font-weight: 600;
+}
+.navbar .nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.navbar a:hover {
+    background-color: #7a4f08;
+    transition: 0.3s;
+}
+
+/* Nội dung trang */
+.content {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* Cards container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Individual card style */
+.card {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style cho form tìm kiếm trên menu */
+.search-form {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2px 10px;
+    border: 1px solid #ccc;
+}
+
+.search-form input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 150px; /* Độ rộng ô tìm kiếm */
+}
+
+.search-form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 5px;
+    width: auto; /* Ghi đè style button chung nếu bị ảnh hưởng */
+    color: #4b2e05;
+}
+
+.search-form button:hover {
+    color: #a36b23;
+    background: none; /* Tránh bị đổi màu nền do CSS chung */
+}
