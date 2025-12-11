@@ -75,19 +75,7 @@
             <a href="cart.php">Cart</a> <a href="Lab/">Lab</a>
         </div>
 
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
 
-        <div class="mobile-menu">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="shop.php">Shop</a>
-            <a href="cart.php">Cart</a>
-            <a href="Lab/">Lab</a>
-        </div>
 
         <div class="nav-links" style="display: flex; align-items: center; gap: 10px;">
             <form action="shop.php" method="GET" class="search-form">
