@@ -74,7 +74,21 @@
             <a href="shop.php">Shop</a>
             <a href="cart.php">Cart</a> <a href="Lab/">Lab</a>
         </div>
-        
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="mobile-menu">
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="shop.php">Shop</a>
+            <a href="cart.php">Cart</a>
+            <a href="Lab/">Lab</a>
+        </div>
+
         <div class="nav-links" style="display: flex; align-items: center; gap: 10px;">
             <form action="shop.php" method="GET" class="search-form">
                 <input type="text" name="keyword" placeholder="Tìm kiếm..." required>
@@ -122,16 +136,16 @@
                             $grand_total += $total_line;
                         ?>
                         <tr>
-                            <td style="display: flex; align-items: center; gap: 10px;">
+                            <td data-label="Sản phẩm" style="display: flex; align-items: center; gap: 10px;">
                                 <img src="img/<?php echo !empty($item['image_url']) ? $item['image_url'] : 'default.png'; ?>" class="cart-img">
                                 <b><?php echo htmlspecialchars($item['name']); ?></b>
                             </td>
-                            <td><?php echo number_format($item['price'], 0, ',', '.'); ?> đ</td>
-                            <td>
+                            <td data-label="Giá"><?php echo number_format($item['price'], 0, ',', '.'); ?> đ</td>
+                            <td data-label="Số lượng">
                                 <input type="number" name="qty[<?php echo $item['item_id']; ?>]" value="<?php echo $item['quantity']; ?>" min="1" class="qty-input">
                             </td>
-                            <td><?php echo number_format($total_line, 0, ',', '.'); ?> đ</td>
-                            <td>
+                            <td data-label="Thành tiền"><?php echo number_format($total_line, 0, ',', '.'); ?> đ</td>
+                            <td data-label="Hành động">
                                 <a href="process/cart_action.php?action=delete&id=<?php echo $item['item_id']; ?>" class="btn-remove" onclick="return confirm('Xóa sản phẩm này?');">Xóa</a>
                             </td>
                         </tr>
@@ -151,6 +165,22 @@
                 </div>
             </form>
         <?php endif; ?>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <h3>Liên Hệ</h3>
+            <p>Địa chỉ: 180 Cao Lỗ, phường Chánh Hưng</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="copyright">
+                &copy; Coffee World. The author is YoshiIT
+            </div>
+        </div>
     </div>
 
 </body>

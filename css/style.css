@@ -31,6 +31,7 @@ body {
     align-items: center;
     background-color: #4b2e05;
     padding: 0 20px;
+    position: relative;
 }
 
 .navbar a {
@@ -49,6 +50,50 @@ body {
 .navbar a:hover {
     background-color: #7a4f08;
     transition: 0.3s;
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Mobile menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #4b2e05;
+    flex-direction: column;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu a {
+    padding: 10px 20px;
+    border-bottom: 1px solid #7a4f08;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
 }
 
 /* Nội dung trang */
@@ -118,4 +163,179 @@ body {
 .search-form button:hover {
     color: #a36b23;
     background: none; /* Tránh bị đổi màu nền do CSS chung */
+}
+
+/* Footer */
+.footer {
+    background-color: #4b2e05;
+    color: white;
+    padding: 20px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #7a4f08;
+}
+
+.copyright {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    /* Banner */
+    .banner {
+        height: 200px;
+    }
+
+    .banner h1 {
+        font-size: 2em;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 0 10px;
+    }
+
+    .navbar .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    /* Cards */
+    .card-container {
+        gap: 15px;
+    }
+
+    .card {
+        width: calc(50% - 15px);
+        min-width: 150px;
+    }
+
+    /* Search form */
+    .search-form input {
+        width: 120px;
+    }
+
+    /* Footer */
+    .footer-content {
+        gap: 10px;
+    }
+
+    .footer h3 {
+        font-size: 16px;
+    }
+
+    .footer p {
+        font-size: 13px;
+    }
+
+    .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .copyright {
+        font-size: 11px;
+    }
+
+    /* Cart table responsive */
+    .cart-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .cart-table thead {
+        display: none;
+    }
+
+    .cart-table tbody {
+        display: block;
+    }
+
+    .cart-table tr {
+        display: block;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background: white;
+    }
+
+    .cart-table td {
+        display: block;
+        text-align: right;
+        padding: 5px 10px;
+        border: none;
+    }
+
+    .cart-table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        color: #4b2e05;
+    }
+
+    .cart-table td:first-child {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .cart-table td:first-child:before {
+        display: none;
+    }
+
+    /* Shop grid */
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
 }

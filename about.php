@@ -50,5 +50,22 @@
         <h2>Khám phá hương vị cà phê đích thực ☕</h2>
         <p>Trang web này dành cho những người yêu thích cà phê và muốn tìm hiểu thêm về thế giới của hạt cà phê.</p>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <h3>Liên Hệ</h3>
+            <p>Địa chỉ: 180 Cao Lỗ, phường Chánh Hưng</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Coffee World. All rights reserved.
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
