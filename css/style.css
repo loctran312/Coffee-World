@@ -2,13 +2,6 @@ body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
     background-color: #fffaf3;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.content {
-    flex: 1;
 }
 
 /* Banner */
@@ -136,7 +129,7 @@ body {
     color: white;
     padding: 20px 20px;
     text-align: center;
-    margin-top: auto;
+    margin-top: 40px;
 }
 
 .footer-content {

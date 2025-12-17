@@ -2,15 +2,14 @@
     session_start();
     include_once('config/database.php');
 
-    // 1. Kiểm tra xem có từ khóa tìm kiếm không
+    // Kiểm tra xem có từ khóa tìm kiếm không
     $keyword = '';
     if (isset($_GET['keyword'])) {
         $keyword = trim($_GET['keyword']);
     }
 
-    // 2. Chuẩn bị câu lệnh SQL
+    // Chuẩn bị câu lệnh SQL
     if ($keyword) {
-        // SỬA LỖI Ở ĐÂY: Dùng 2 tên tham số khác nhau (:key_name và :key_desc)
         $sql = "SELECT * FROM products WHERE name LIKE :key_name OR description LIKE :key_desc ORDER BY id DESC";
         $stmt = $pdo->prepare($sql);
         
